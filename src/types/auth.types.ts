@@ -17,7 +17,7 @@ export interface RegisterCredentials {
     email: string
 }
 
-export interface AuthState{
+export interface AuthState {
     user: User | null
     accessToken: string | null
     isLoading: boolean  // true when api call is in progress

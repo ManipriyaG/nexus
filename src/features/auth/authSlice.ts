@@ -14,8 +14,8 @@ const initialState: AuthState = {
 const authSlice = createSlice({
     name: 'auth',
     initialState,
-    reducers:{
-        setCredentials: (state, action: PayloadAction<{user: User; accessToken: string}>) => {
+    reducers: {
+        setCredentials: (state, action: PayloadAction<{ user: User; accessToken: string }>) => {
             state.user = action.payload.user
             state.accessToken = action.payload.accessToken
             state.isAuthenticated = true
@@ -46,11 +46,11 @@ const authSlice = createSlice({
     }
 })
 
-export const {setCredentials, clearCredentials, setLoading, setError, clearError} = authSlice.actions
+export const { setCredentials, clearCredentials, setLoading, setError, clearError } = authSlice.actions
 
-export const selectUser = (state: {auth: AuthState}) => state.auth.user
-export const selectIsAuthenticated = (state: {auth: AuthState}) => state.auth.isAuthenticated
-export const selectIsLoading = (state: {auth: AuthState}) => state.auth.isLoading
-export const selectError = (state: {auth: AuthState}) => state.auth.error
+export const selectUser = (state: { auth: AuthState }) => state.auth.user
+export const selectIsAuthenticated = (state: { auth: AuthState }) => state.auth.isAuthenticated
+export const selectIsLoading = (state: { auth: AuthState }) => state.auth.isLoading
+export const selectError = (state: { auth: AuthState }) => state.auth.error
 
 export default authSlice.reducer

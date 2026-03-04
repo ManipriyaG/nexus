@@ -17,9 +17,9 @@ const mockUser: User = {
     createdAt: "2026-03-01T00:00:00Z"
 }
 
-describe('authSlice', ()=> {
+describe('authSlice', () => {
     it('should return initial state when no action is given', () => {
-        const state = authReducer(undefined, {type: '@INIT'})
+        const state = authReducer(undefined, { type: '@INIT' })
         expect(state).toEqual(initialState)
     })
 
@@ -55,13 +55,13 @@ describe('authSlice', ()=> {
     })
 
     it('should set error when setError action is dispatched', () => {
-        const loadingState = {...initialState, isLoading: true}
+        const loadingState = { ...initialState, isLoading: true }
         const state = authReducer(loadingState, setError("Invalid Password"))
         expect(state.isLoading).toEqual(false)
     })
 
     it('should clear error when clearError is dispatched', () => {
-        const errorState = {...initialState, error: "Invalid Password"}
+        const errorState = { ...initialState, error: "Invalid Password" }
         const state = authReducer(errorState, clearError())
         expect(state.error).toBeNull()
     })
