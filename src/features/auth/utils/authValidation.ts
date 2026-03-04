@@ -1,6 +1,6 @@
 export type AuthMode = 'Login' | 'Register'
 
-export interface FormData {
+export interface AuthFormData {
   email: string
   name: string
   password: string
@@ -14,7 +14,7 @@ export interface FormErrors {
   confirmPassword?: string
 }
 
-export const INITIAL_FORM_DATA: FormData = {
+export const INITIAL_FORM_DATA: AuthFormData = {
   email: '',
   name: '',
   password: '',
@@ -45,7 +45,7 @@ const validateConfirmPassword = (password: string, confirmPassword: string): str
   if (confirmPassword !== password) return "Passwords do not match"
 }
 
-export const validateAuthForms = (data: FormData, mode: AuthMode): FormErrors => {
+export const validateAuthForms = (data: AuthFormData, mode: AuthMode): FormErrors => {
   const errors: FormErrors = {}
   if (mode === 'Register') {
     const nameError = validateName(data.name)
@@ -67,7 +67,7 @@ export const validateAuthForms = (data: FormData, mode: AuthMode): FormErrors =>
 
 // Called on every keystroke AFTER the field has already shown an error
 // This makes errors disappear in real time as user fixes them
-export const validateField = (field: keyof FormData, value: string, formData: FormData, mode: AuthMode): string | undefined => {
+export const validateField = (field: keyof AuthFormData, value: string, formData: AuthFormData, mode: AuthMode): string | undefined => {
   switch (field) {
     case 'name':
       return mode === 'Register' ? validateName(value) : undefined
