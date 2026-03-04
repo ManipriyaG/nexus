@@ -17,6 +17,11 @@ export interface RegisterCredentials {
     email: string
 }
 
+export interface AuthResponse {
+    user: User,
+    accessToken: string
+}
+
 export interface AuthState {
     user: User | null
     accessToken: string | null
