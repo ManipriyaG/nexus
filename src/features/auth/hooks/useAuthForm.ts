@@ -1,8 +1,10 @@
 import React, { useState } from "react"
 import useAuth from "./useAuth"
 import { type FormErrors, INITIAL_FORM_DATA, type AuthFormData, type AuthMode, validateField, validateAuthForms } from "../utils/authValidation"
+import { useNavigate } from "react-router-dom"
 
 const useAuthForm = () => {
+    const navigate = useNavigate()
     const { login, register, dismissError, isLoading, error } = useAuth()
     const [mode, setMode] = useState<AuthMode>('Login')
     const [formData, setFormData] = useState<AuthFormData>(INITIAL_FORM_DATA)
@@ -38,7 +40,7 @@ const useAuthForm = () => {
         }
 
         if (success) {
-            // navigation logic
+           navigate("/workspace")
         }
     }
 
