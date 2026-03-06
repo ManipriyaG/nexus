@@ -37,7 +37,6 @@ const authSlice = createSlice({
             .addCase(loginThunk.rejected, (state, action) => {
                 state.error = action.payload as string
                 state.isAuthenticated = false
-                state.isAuthenticated = false
                 state.user = null
                 state.accessToken = null
                 state.isLoading = false
@@ -88,5 +87,6 @@ export const selectIsAuthenticated = (state: { auth: AuthState }) => state.auth.
 export const selectIsLoading = (state: { auth: AuthState }) => state.auth.isLoading
 export const selectError = (state: { auth: AuthState }) => state.auth.error
 export const selectAccessToken = (state: { auth: AuthState }) => state.auth.accessToken
+export const selectIsInitialised = (state: { auth: AuthState }) => state.auth.isInitialised
 
 export default authSlice.reducer
