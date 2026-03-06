@@ -136,49 +136,49 @@ describe("authSlice LOgout Thunk", () => {
 })
 
 describe("authSlice selectors", () => {
-    const mockStoreState = (authState: AuthState) => ({auth: authState})
+    const mockStoreState = (authState: AuthState) => ({ auth: authState })
     it("should return user for selectUser selector when logged in", () => {
-        const state = mockStoreState({...initialState, user:mockUser})
+        const state = mockStoreState({ ...initialState, user: mockUser })
         expect(selectUser(state)).toEqual(mockUser)
     })
 
     it("should return null for selectUser selector when not logged in", () => {
-        const state = mockStoreState({...initialState})
+        const state = mockStoreState({ ...initialState })
         expect(selectUser(state)).toBeNull()
     })
 
     it("should return true for selectIsAuthenticated selector when logged in", () => {
-        const state = mockStoreState({...initialState, isAuthenticated: true})
+        const state = mockStoreState({ ...initialState, isAuthenticated: true })
         expect(selectIsAuthenticated(state)).toEqual(true)
     })
 
     it("should return false for selectIsAuthenticated selector when not logged in", () => {
-        const state = mockStoreState({...initialState, isAuthenticated: false})
+        const state = mockStoreState({ ...initialState, isAuthenticated: false })
         expect(selectIsAuthenticated(state)).toEqual(false)
     })
 
     it("should return selectIsLoading state", () => {
-        const state = mockStoreState({...initialState, isLoading: true})
+        const state = mockStoreState({ ...initialState, isLoading: true })
         expect(selectIsLoading(state)).toBe(true)
     })
 
-     it("should return error for selectError selector", () => {
-        const state = mockStoreState({...initialState, error: "Some error"})
+    it("should return error for selectError selector", () => {
+        const state = mockStoreState({ ...initialState, error: "Some error" })
         expect(selectError(state)).toEqual("Some error")
     })
 
     it("should return accessToken for selectAccessToken selector when logged in", () => {
-        const state = mockStoreState({...initialState, accessToken: "Some-token"})
+        const state = mockStoreState({ ...initialState, accessToken: "Some-token" })
         expect(selectAccessToken(state)).toEqual("Some-token")
     })
-    
+
     it("should return null as accessToken for selectAccessToken selector when logged out", () => {
-        const state = mockStoreState({...initialState})
+        const state = mockStoreState({ ...initialState })
         expect(selectAccessToken(state)).toBeNull
-    })  
+    })
 
     it("should return selectIsInitialised state", () => {
-        const state = mockStoreState({...initialState, isInitialised: true})
+        const state = mockStoreState({ ...initialState, isInitialised: true })
         expect(selectIsInitialised(state)).toBe(true)
     })
 })
